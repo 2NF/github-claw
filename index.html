@@ -9,12 +9,13 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Noto+Sans+SC:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@400;500;600;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
   </head>
   <body>
-    <header class="topbar">
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
+    <header class="topbar" id="top">
       <a class="brand" href="#top" aria-label="AI Guide 首页">
         <span class="brand-mark" aria-hidden="true">a<span>i</span></span>
         <span>AI <span class="brand-light">Guide</span></span>
@@ -32,7 +33,7 @@
       </nav>
     </header>
 
-    <main id="top">
+    <main id="main-content">
       <section class="hero section-wrap">
         <div class="hero-copy">
           <div class="eyebrow"><span class="live-dot"></span> OPEN KNOWLEDGE · OPEN FUTURE</div>
@@ -66,15 +67,14 @@
             <text class="satellite-label" x="146" y="372" text-anchor="middle">基础</text>
           </svg>
           <div class="art-caption"><span>01 / MAP YOUR CURIOSITY</span><span>持续更新中 <i></i></span></div>
-          <span class="art-spark spark-one">✳</span><span class="art-spark spark-two">✳</span>
+          <span class="art-spark spark-one" aria-hidden="true"></span><span class="art-spark spark-two" aria-hidden="true"></span>
         </div>
         <div class="hero-index"><span>SCROLL TO EXPLORE</span><span class="index-rule"></span><span>01 — 04</span></div>
       </section>
 
-      <section class="ticker" aria-label="项目关键词">
+      <section class="ticker" aria-hidden="true">
         <div class="ticker-track">
-          <span>大语言模型</span><b>✳</b><span>检索增强生成</span><b>✳</b><span>智能体</span><b>✳</b><span>AI 工程实践</span><b>✳</b>
-          <span>大语言模型</span><b>✳</b><span>检索增强生成</span><b>✳</b><span>智能体</span><b>✳</b><span>AI 工程实践</span><b>✳</b>
+          <span>大语言模型</span><b></b><span>检索增强生成</span><b></b><span>智能体</span><b></b><span>AI 工程实践</span>
         </div>
       </section>
 
@@ -90,6 +90,7 @@
           <button class="filter-chip" type="button" data-filter="practice" aria-pressed="false">实践工具</button>
           <span class="filter-hint">精选主题 · 持续整理</span>
         </div>
+        <p class="filter-status" id="filter-status" role="status" aria-live="polite"></p>
         <div class="topic-grid">
           <a class="topic-card card-lime" data-category="foundation" href="https://github.com/2NF/ai-guide" target="_blank" rel="noreferrer">
             <div class="card-top"><span class="card-index">A — 01</span><span class="card-arrow" aria-hidden="true">↗</span></div>
@@ -140,9 +141,9 @@
             <a class="text-link" href="#roadmap">看看项目路线 <span aria-hidden="true">↓</span></a>
           </div>
           <div class="path-list">
-            <a class="path-item" href="#explore"><span class="path-num">01</span><span class="path-symbol">◌</span><span class="path-info"><strong>好奇者的第一站</strong><small>AI 基础 · 大语言模型 · Prompt</small></span><span class="path-duration">建立认知</span><span class="path-go">↗</span></a>
-            <a class="path-item" href="#explore"><span class="path-num">02</span><span class="path-symbol">⌘</span><span class="path-info"><strong>应用构建者之路</strong><small>RAG · Agent · 产品工作流</small></span><span class="path-duration">动手构建</span><span class="path-go">↗</span></a>
-            <a class="path-item" href="#explore"><span class="path-num">03</span><span class="path-symbol">✳</span><span class="path-info"><strong>AI 实践与探索</strong><small>模型评估 · 安全 · 开源生态</small></span><span class="path-duration">持续进阶</span><span class="path-go">↗</span></a>
+            <a class="path-item" href="#explore"><span class="path-num">01</span><span class="path-symbol" aria-hidden="true">A</span><span class="path-info"><strong>好奇者的第一站</strong><small>AI 基础 · 大语言模型 · Prompt</small></span><span class="path-duration">建立认知</span><span class="path-go" aria-hidden="true">↗</span></a>
+            <a class="path-item" href="#explore"><span class="path-num">02</span><span class="path-symbol" aria-hidden="true">B</span><span class="path-info"><strong>应用构建者之路</strong><small>RAG · Agent · 产品工作流</small></span><span class="path-duration">动手构建</span><span class="path-go" aria-hidden="true">↗</span></a>
+            <a class="path-item" href="#explore"><span class="path-num">03</span><span class="path-symbol" aria-hidden="true">C</span><span class="path-info"><strong>AI 实践与探索</strong><small>模型评估 · 安全 · 开源生态</small></span><span class="path-duration">持续进阶</span><span class="path-go" aria-hidden="true">↗</span></a>
           </div>
         </div>
       </section>
@@ -188,7 +189,7 @@
       </section>
 
       <section class="join-section section-wrap">
-        <div class="join-mark" aria-hidden="true">✳</div>
+        <div class="join-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/></svg></div>
         <div><div class="eyebrow">OPEN SOURCE, OPEN MINDS</div><h2>好地图，<span class="serif-accent">值得一起画。</span></h2><p>发现错误、想补充内容，或只是觉得这个方向不错？我们欢迎每一位同行者。</p></div>
         <a class="button button-primary" href="https://github.com/2NF/ai-guide" target="_blank" rel="noreferrer">前往 GitHub 共建 <span aria-hidden="true">↗</span></a>
       </section>
@@ -200,7 +201,7 @@
         <p>Keep learning. Keep building.<br>让好奇心，成为最好的导航。</p>
         <div class="footer-links"><a href="#explore">探索内容</a><a href="#roadmap">项目路线</a><a href="#updates">更新日志</a><a href="https://github.com/2NF/ai-guide" target="_blank" rel="noreferrer">GitHub ↗</a></div>
       </div>
-      <div class="footer-bottom"><span>OPEN KNOWLEDGE, BUILT TOGETHER.</span><span>为好奇心而造 <span class="footer-star">✳</span></span></div>
+      <div class="footer-bottom"><span>OPEN KNOWLEDGE, BUILT TOGETHER.</span><span>为好奇心而造 <span class="footer-star" aria-hidden="true">✳</span></span></div>
     </footer>
   </body>
 </html>

@@ -1,5 +1,15 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector("#site-nav");
+const filterStatus = document.querySelector("#filter-status");
+const filterLabels = {
+  all: "全部主题",
+  foundation: "基础认知",
+  build: "构建应用",
+  practice: "实践工具",
+};
+const topicCards = [...document.querySelectorAll(".topic-card")];
+
+filterStatus.textContent = `显示全部 ${topicCards.length} 个精选主题`;
 
 menuToggle.addEventListener("click", () => {
   const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
@@ -24,8 +34,11 @@ document.querySelectorAll(".filter-chip").forEach((button) => {
       chip.classList.toggle("is-active", isActive);
       chip.setAttribute("aria-pressed", String(isActive));
     });
-    document.querySelectorAll(".topic-card").forEach((card) => {
+    let visibleCount = 0;
+    topicCards.forEach((card) => {
       card.hidden = filter !== "all" && card.dataset.category !== filter;
+      if (!card.hidden) visibleCount += 1;
     });
+    filterStatus.textContent = `显示${filterLabels[filter]} ${visibleCount} 个精选主题`;
   });
 });
