@@ -9,20 +9,35 @@ const filterLabels = {
 };
 const topicCards = [...document.querySelectorAll(".topic-card")];
 
+function closeSiteNav(restoreFocus = false) {
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.setAttribute("aria-label", "打开导航");
+  siteNav.classList.remove("is-open");
+  if (restoreFocus) menuToggle.focus();
+}
+
 filterStatus.textContent = `显示全部 ${topicCards.length} 个精选主题`;
 
 menuToggle.addEventListener("click", () => {
   const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
-  menuToggle.setAttribute("aria-expanded", String(!isOpen));
-  menuToggle.setAttribute("aria-label", isOpen ? "打开导航" : "关闭导航");
-  siteNav.classList.toggle("is-open", !isOpen);
+  if (isOpen) {
+    closeSiteNav();
+    return;
+  }
+  menuToggle.setAttribute("aria-expanded", "true");
+  menuToggle.setAttribute("aria-label", "关闭导航");
+  siteNav.classList.add("is-open");
 });
 
 siteNav.addEventListener("click", (event) => {
   if (event.target.closest("a")) {
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute("aria-label", "打开导航");
-    siteNav.classList.remove("is-open");
+    closeSiteNav();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+    closeSiteNav(true);
   }
 });
 
