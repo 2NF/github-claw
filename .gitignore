@@ -1,0 +1,5 @@
+node_modules/
+__pycache__/
+.pytest_cache/
+media-platform/backend/data/
+media-platform/frontend/dist/
