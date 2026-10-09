@@ -1,0 +1,21 @@
+{
+  "name": "Media Platform (Vue + Flask)",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" }
+  },
+  "workspaceFolder": "${localWorkspaceFolder}",
+  "containerEnv": { "HOST": "0.0.0.0", "PORT": "5000" },
+  "onCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "bash .devcontainer/start.sh",
+  "forwardPorts": [5173, 5000],
+  "portsAttributes": {
+    "5173": { "label": "Vue Frontend (Vite)", "onAutoForward": "openBrowser" },
+    "5000": { "label": "Python Backend (Flask)", "onAutoForward": "notify" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["Vue.volar", "ms-python.python", "ms-python.vscode-pylance"]
+    }
+  }
+}
