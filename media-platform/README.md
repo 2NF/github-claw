@@ -4,7 +4,7 @@
 
 ## 运行
 
-依赖：Python 3.9+、Node 18+、FFmpeg（需含 libx264/libvpx-vp9/libmp3lame/libvorbis）。
+依赖：Python 3.9+、Node 18+。后端优先使用系统 PATH 中的 FFmpeg；未安装时会回退到 `imageio-ffmpeg` 提供的可执行文件。
 
 ```bash
 ./run.sh          # 安装依赖、构建前端并启动，访问 http://127.0.0.1:5000

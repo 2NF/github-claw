@@ -35,7 +35,14 @@ def detect_kind(filename):
 
 
 def ffmpeg_path():
-    return shutil.which("ffmpeg")
+    exe = shutil.which("ffmpeg")
+    if exe:
+        return exe
+    try:
+        import imageio_ffmpeg
+        return imageio_ffmpeg.get_ffmpeg_exe()
+    except (ImportError, RuntimeError):
+        return None
 
 
 def _int(params, key, default=None, lo=None, hi=None):

@@ -8,6 +8,7 @@ from PIL import Image
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from app import create_app  # noqa: E402
+import processors  # noqa: E402
 
 
 @pytest.fixture
@@ -16,7 +17,18 @@ def client(tmp_path):
 
 
 def ff(*a):
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *a], check=True)
+    exe = processors.ffmpeg_path()
+    if not exe:
+        pytest.skip("FFmpeg executable is unavailable")
+    subprocess.run([exe, "-y", "-loglevel", "error", *a], check=True)
+
+
+def test_ffmpeg_path_falls_back_to_imageio(monkeypatch):
+    from types import SimpleNamespace
+
+    monkeypatch.setattr(processors.shutil, "which", lambda _: None)
+    monkeypatch.setitem(sys.modules, "imageio_ffmpeg", SimpleNamespace(get_ffmpeg_exe=lambda: "bundled-ffmpeg"))
+    assert processors.ffmpeg_path() == "bundled-ffmpeg"
 
 
 @pytest.fixture
